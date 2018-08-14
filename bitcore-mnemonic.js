@@ -3,7 +3,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
 var spec = {
   name: 'Mnemonic',
-  message: 'Internal Error on bitcore-mnemonic module {0}',
+  message: 'Internal Error on mangacore-mnemonic module {0}',
   errors: [{
     name: 'InvalidEntropy',
     message: 'Entropy length must be an even multiple of 11 bits: {0}'
@@ -16,29 +16,29 @@ var spec = {
   }]
 };
 
-module.exports = require('bitcore-lib').errors.extend(spec);
+module.exports = require('mangacore-lib').errors.extend(spec);
 
-},{"bitcore-lib":"bitcore-lib"}],2:[function(require,module,exports){
+},{"mangacore-lib":"mangacore-lib"}],2:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
-var bitcore = require('bitcore-lib');
-var BN = bitcore.crypto.BN;
+var mangacore = require('mangacore-lib');
+var BN = mangacore.crypto.BN;
 var unorm = require('unorm');
-var _ = bitcore.deps._;
+var _ = mangacore.deps._;
 
 var pbkdf2 = require('./pbkdf2');
 var errors = require('./errors');
 
-var Hash = bitcore.crypto.Hash;
-var Random = bitcore.crypto.Random;
+var Hash = mangacore.crypto.Hash;
+var Random = mangacore.crypto.Random;
 
-var $ = bitcore.util.preconditions;
+var $ = mangacore.util.preconditions;
 
 
 /**
  * This is an immutable class that represents a BIP39 Mnemonic code.
- * See BIP39 specification for more info: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
+ * See BIP39 specification for more info: https://github.com/mangacoin/bips/blob/master/bip-0039.mediawiki
  * A Mnemonic code is a a group of easy to remember words used for the generation
  * of deterministic wallets. A Mnemonic can be used to generate a seed using
  * an optional passphrase, for later generate a HDPrivateKey.
@@ -77,7 +77,7 @@ var Mnemonic = function(data, wordlist) {
   } else if (_.isNumber(data)) {
     ent = data;
   } else if (data) {
-    throw new bitcore.errors.InvalidArgument('data', 'Must be a Buffer, a string or an integer');
+    throw new mangacore.errors.InvalidArgument('data', 'Must be a Buffer, a string or an integer');
   }
   ent = ent || 128;
 
@@ -99,7 +99,7 @@ var Mnemonic = function(data, wordlist) {
     throw new errors.InvalidMnemonic(phrase);
   }
   if (ent % 32 !== 0 || ent < 128) {
-    throw new bitcore.errors.InvalidArgument('ENT', 'Values must be ENT > 128 and ENT % 32 == 0');
+    throw new mangacore.errors.InvalidArgument('ENT', 'Values must be ENT > 128 and ENT % 32 == 0');
   }
 
   phrase = phrase || Mnemonic._mnemonic(ent, wordlist);
@@ -218,7 +218,7 @@ Mnemonic.fromSeed = function(seed, wordlist) {
 /**
  *
  * Generates a HD Private Key from a Mnemonic.
- * Optionally receive a passphrase and bitcoin network.
+ * Optionally receive a passphrase and mangacoin network.
  *
  * @param {String=} [passphrase]
  * @param {Network|String|number=} [network] - The network: 'livenet' or 'testnet'
@@ -226,7 +226,7 @@ Mnemonic.fromSeed = function(seed, wordlist) {
  */
 Mnemonic.prototype.toHDPrivateKey = function(passphrase, network) {
   var seed = this.toSeed(passphrase);
-  return bitcore.HDPrivateKey.fromSeed(seed, network);
+  return mangacore.HDPrivateKey.fromSeed(seed, network);
 };
 
 /**
@@ -317,7 +317,7 @@ Mnemonic._entropyChecksum = function(entropy) {
 module.exports = Mnemonic;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":1,"./pbkdf2":3,"./words":7,"bitcore-lib":"bitcore-lib","buffer":12,"unorm":230}],3:[function(require,module,exports){
+},{"./errors":1,"./pbkdf2":3,"./words":7,"mangacore-lib":"mangacore-lib","buffer":12,"unorm":230}],3:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -21281,7 +21281,7 @@ UChar.udata={
    }
 }(this));
 
-},{}],"bitcore-mnemonic":[function(require,module,exports){
+},{}],"mangacore-mnemonic":[function(require,module,exports){
 module.exports = require('./lib/mnemonic');
 
 },{"./lib/mnemonic":2}]},{},[]);

@@ -1,18 +1,18 @@
 {
-  "name": "bitcore-mnemonic",
-  "main": "./bitcore-mnemonic.min.js",
+  "name": "mangacore-mnemonic",
+  "main": "./mangacore-mnemonic.min.js",
   "version": "1.1.4",
-  "homepage": "https://github.com/bitpay/bitcore-mnemonic",
+  "homepage": "https://github.com/bitpay/mangacore-mnemonic",
   "authors": [
     "BitPay"
   ],
-  "description": "BIP39 - Mnemonics implemented for Bitcore.",
+  "description": "BIP39 - Mnemonics implemented for Mangacore.",
   "moduleType": [
     "globals"
   ],
   "keywords": [
-    "bitcoin",
-    "bitcore",
+    "mangacoin",
+    "mangacore",
     "btc",
     "satoshi",
     "mnemonic"
